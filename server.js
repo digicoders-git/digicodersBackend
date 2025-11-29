@@ -46,22 +46,24 @@ app.use(cookieParser());
 
 // CORS configuration
 
-app.use(
-  cors({
-    // origin: process.env.CORS_ORIGIN,
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "https://thedigicodersadmin.netlify.app",
-      "https://digicoders-admin.vercel.app",
-      "https://digicoder-admin.onrender.com",
-    ],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+// app.use(
+//   cors({
+//     // origin: process.env.CORS_ORIGIN,
+//     origin: [
+//       "http://localhost:5173",
+//       "http://localhost:5174",
+//       "https://thedigicodersadmin.netlify.app",
+//       "https://digicoders-admin.vercel.app",
+//       "https://digicoder-admin.onrender.com",
+//     ],
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//   })
+// );
 
+
+app.use(cors())
 // Body parsing middleware
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
@@ -112,5 +114,5 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`🌐 CORS Origin: ${process.env.CORS_ORIGIN}`);
+  // console.log(`🌐 CORS Origin: ${process.env.CORS_ORIGIN}`);
 });
